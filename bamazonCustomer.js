@@ -95,3 +95,6 @@ var customerQuestion = function () {
         })
     })
 };
+
+// if result[answer.id]
+// Modify your bamazonCustomer.js app so that when a customer purchases anything from the store, the price of the product multiplied by the quantity purchased is added to the product's product_sales column.

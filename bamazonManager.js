@@ -89,7 +89,7 @@ var managerView = function () {
                     } else {
                         console.log("\nNo items with low inventory.\n")
                     }
-                    mgrOptions();
+                    managerView();
                 })
             }
             else if (answer.response === "Add To Inventory") {
@@ -110,7 +110,7 @@ var managerView = function () {
                         currentStock += parseInt(answer.quantity);
                         var query = connection.query('UPDATE products SET stock_quantity=' + currentStock + ' where item_id=' + answer.restock, function (err, result) {
                             console.log("\nYour inventory total is now " + currentStock);
-                            mgrOptions();
+                            managerView();
                         })
 
                     })
@@ -148,8 +148,8 @@ var managerView = function () {
                             stock_quantity: answer.quantity
                         }, function (err, res) {
                             if (err) console.log(err);
-                            console.log("\nSuccessful! Your item is now added!\n")
-                            mgrOptions();
+                            console.log("\nSuccessful! Your item is now added!\n");
+                            managerView();
                         }
                     )
                 })
