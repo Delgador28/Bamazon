@@ -17,7 +17,9 @@ var connection = mysql.createConnection({
   database: "bamazon"
 });
 
+
 // ==================================================================================
+
 
 connection.connect(function (err) {
 
@@ -31,7 +33,7 @@ connection.connect(function (err) {
 // ==================================================================================
 
 var makeTable = function () {
-  connection.query("SELECT * FROM departments", function(err, res) {
+  connection.query("SELECT * FROM departments", function (err, res) {
     if (err) throw err;
     console.table(res);
     supervisorView();
@@ -95,12 +97,16 @@ var createDepartment = function () {
 
 // ==================================================================================
 
-var viewMySales = function(){
-  connection.query(
-    "SELECT STUFF.department_id, STUFF.department_name, STUFF.over_head_costs, SUM(STUFF.product_sales) as product_sales, (SUM(STUFF.product_sales) - STUFF.over_head_costs) as total_profit FROM (SELECT departments.department_id, departments.department_name, departments.over_head_costs, IFNULL(products.product_sales, 0) as product_sales FROM products RIGHT JOIN departments ON products.department_name = departments.department_name) as STUFF GROUP BY department_id",
-    function(err, res) {
-      makeTable();
-      supervisorView();
+function viewMySales() {
+  connection.query('SELECT STUFF.department_id, STUFF.department_name, STUFF.over_head_costs, SUM(STUFF.sales) as sales, (SUM(STUFF.sales) - STUFF.over_head_costs) as total_profit FROM (SELECT departments.department_id,   departments.department_name,  departments.over_head_costs, IFNULL(products.sales, 0) as sales FROM products RIGHT JOIN departments ON products.department_name = departments.department_name) as STUFF GROUP BY department_id',
+    function (err, res) {
+      if (err) throw err;
+      console.log(res)
+      // makeTable();
+      // supervisorView();
     }
   )
 }
+
+
+// drop database tabkle and source ti again

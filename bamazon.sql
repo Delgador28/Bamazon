@@ -16,6 +16,7 @@ CREATE TABLE products
     stock_quantity INT
     (10) DEFAULT 0,
     primary key
+    sales INT(500) NOT NULL,
     (item_id)
 );
  
@@ -42,16 +43,3 @@ CREATE TABLE products
             ("Couch", "Furniture", 200, 10),
             ("Cheerios", "Food", 3, 300),
             ("Chips", "Food", 1, 10000)
-       
-       
-        -- INSERT INTO departments
-        --     (department_name, over_head_costs)
-        -- VALUES
-        --     ("Gardening", 282828),
-        --     ("Clothing", 21000),
-        --     ("Food", 30000),
-        --     ("Pet Care", 40000),
-        --     ("Health", 50000),
-        --     ("Furniture", 100000)
-
-

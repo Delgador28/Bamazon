@@ -156,3 +156,5 @@ var managerView = function () {
             }
         })
 }
+
+
